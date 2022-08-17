@@ -6,11 +6,13 @@ import {useState} from 'react';
 
 function App() {
   const [bill, setBill] = useState(0);
+  const [tip, setTip] = useState(0);
+  const [total, setTotal] = useState(0);
   return (
     <div className="App">
      <Title />
-     <InputSection bill={bill} setBill={setBill}/>
-     <ResultSection />
+     <InputSection bill={bill} setBill={setBill} tip={tip} setTip={setTip}/>
+     <ResultSection bill={bill} setBill={setBill} tip={tip} setTip={setTip} total={total} setTotal={setTotal}/>
     </div>
   );
 }
