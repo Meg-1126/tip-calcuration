@@ -37,10 +37,11 @@ export default function InputSection () {
       } 
   }
   return (
-    <section>
+    <section className="section__input">
       <p>Bill</p>
       <input type="number" value={calc.bill} placeholder="$" onChange={handleChangeBill}></input>
       <div className="wrapper__btn">
+      <p>Select Tip (%)</p>
        <button className="btn__per" onClick={handleClick} value="5">5%</button>
        <button className="btn__per" onClick={handleClick} value="10">10%</button>
        <button className="btn__per" onClick={handleClick} value="15">15%</button>
