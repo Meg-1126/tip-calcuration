@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "./appContext";
 
-export default function ResultSection (props) {
-  const {bill, setBill, tip, setTip, total, setTotal} = props;
-
-  const calculateTip = () => {
-    setTip(bill * 0.05);
-  }
-
+export default function ResultSection () {
+  const calc = useContext(AppContext);
+  
   const handleClick = () => {
-    alert("Reset button is clicked"); //change this later
+    calc.setBill(0);
+    calc.setSelectedBtn(0);
+    calc.setCustomTip(0);
+    calc.setIsClicked(false);
+    calc.setNum(0);
+    calc.setTip(0);
+    calc.setTotal(0);
   }
 
   return (
     <section>
       <p>Tip Amount<br/>/ person</p>
-      <p>${tip}</p>
+      <p>${calc.tip}</p>
       <p>Total<br/>/ person</p>
-      <p>${total}</p>
+      <p>${calc.total}</p>
       <button className="btn__reset" onClick={handleClick}>RESET</button>
     </section>
   );
