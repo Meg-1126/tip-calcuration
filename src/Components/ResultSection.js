@@ -15,7 +15,7 @@ export default function ResultSection () {
   }
 
   return (
-    <section>
+    <section className="section__result">
       <p>Tip Amount<br/>/ person</p>
       <p>${calc.tip}</p>
       <p>Total<br/>/ person</p>
