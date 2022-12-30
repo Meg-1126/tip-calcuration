@@ -9,6 +9,8 @@ import StyledApp from './Components/StyledApp'
 function App() {
   const [bill, setBill] = useState(0);
   const [selectedBtn, setSelectedBtn] = useState(0);
+  const [customInput, setCustomInput] = useState(0);
+  const [displayInput, setDisplayInput] = useState("Custom Tip(%)");
   const [tip, setTip] = useState(0);
   const [customTip, setCustomTip] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
@@ -16,17 +18,17 @@ function App() {
   const [total, setTotal] = useState(0);
  
   return (
+   <AppContext.Provider value={{bill, setBill, selectedBtn, setSelectedBtn, customInput, setCustomInput, displayInput, setDisplayInput, tip, setTip, customTip, setCustomTip, isClicked, setIsClicked, num, setNum, total, setTotal}}>
     <StyledApp>
     <div className="App">
-      <AppContext.Provider value={{bill, setBill, selectedBtn, setSelectedBtn, tip, setTip, customTip, setCustomTip, isClicked, setIsClicked, num, setNum, total, setTotal}}>
        <Title />
        <div className='wrapper__sections'>
        <InputSection />
        <ResultSection/>
        </div>
-      </AppContext.Provider>
     </div>
     </StyledApp>
+   </AppContext.Provider>
   );
 }
 
