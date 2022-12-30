@@ -3,6 +3,6 @@ import React from 'react';
 export default function Title () {
 
   return (
-   <h1>SPLITTER</h1>
+   <h1>TIP CALCULATOR</h1>
   );
 }
