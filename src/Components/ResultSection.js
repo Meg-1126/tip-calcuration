@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { AppContext } from "./appContext";
 
-export default function ResultSection () {
+export default function ResultSection() {
   const calc = useContext(AppContext);
-  
+
   const handleClickReset = () => {
     calc.setBill(0);
     calc.setSelectedBtn(0);
@@ -18,15 +18,25 @@ export default function ResultSection () {
 
   return (
     <section className="section__result">
-      <p>Tip Amount</p><p>/ person</p>
-      {(calc.num !== 0) && (calc.selectedBtn !== 0) && (calc.num !== 0)
-      ?<p>${calc.tip.toFixed(2)}</p>
-      :(calc.num !== 0) && (calc.customInput !== 0) && (calc.num !== 0)?<p>${calc.customTip.toFixed(2)}</p>
-      :<p>$0.00</p>}
-      <p>Total</p><p>/ person</p>
-      {(calc.num !== 0) && ((calc.selectedBtn !== 0)||(calc.customInput !== 0)) && (calc.num !== 0)
-      ?<p>${calc.total.toFixed(2)}</p>:<p>$0.00</p>}
-      <button className="btn__reset" onClick={handleClickReset}>RESET</button>
+      <p>Tip Amount / person</p>
+      {calc.num !== 0 && calc.selectedBtn !== 0 && calc.num !== 0 ? (
+        <p>${calc.tip.toFixed(2)}</p>
+      ) : calc.num !== 0 && calc.customInput !== 0 && calc.num !== 0 ? (
+        <p>${calc.customTip.toFixed(2)}</p>
+      ) : (
+        <p>$0.00</p>
+      )}
+      <p className="p__total">Total / person</p>
+      {calc.num !== 0 &&
+      (calc.selectedBtn !== 0 || calc.customInput !== 0) &&
+      calc.num !== 0 ? (
+        <p>${calc.total.toFixed(2)}</p>
+      ) : (
+        <p>$0.00</p>
+      )}
+      <button className="btn__reset" onClick={handleClickReset}>
+        RESET
+      </button>
     </section>
   );
 }

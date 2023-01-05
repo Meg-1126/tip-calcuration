@@ -11,19 +11,14 @@ export default function InputSection() {
 
   const handleChangeNum = (e) => {
     calc.setNum(e.target.value);
-    // calc.setTip((calc.bill * calc.selectedBtn) / e.target.value);
-    //  calc.setTotal((calc.bill/e.target.value)+((calc.bill*calc.selectedBtn)/e.target.value));
   };
 
   const handleChangeCustom = (e) => {
     calc.setDisplayInput(e.target.value);
     calc.setCustomInput(e.target.value / 100);
-    // calc.setCustomTip((calc.bill*calc.customInput)/calc.num);
-    // calc.setTotal((calc.bill/calc.num)+((calc.bill*calc.customInput)/calc.num));
   };
 
   const handleClick = (e) => {
-    // if ((e.target.value === "5") && (calc.bill > 0)) {
     if (e.target.value === "5") {
       calc.setSelectedBtn(0.05);
       calc.setIsClicked(!calc.isClicked);
@@ -57,24 +52,26 @@ export default function InputSection() {
           calc.bill / calc.num + (calc.bill * calc.customInput) / calc.num
         );
       } else {
-      calc.setTotal(
-        calc.bill / calc.num + (calc.bill * calc.selectedBtn) / calc.num
-      );
-      calc.setTip((calc.bill * calc.selectedBtn) / calc.num);
+        calc.setTotal(
+          calc.bill / calc.num + (calc.bill * calc.selectedBtn) / calc.num
+        );
+        calc.setTip((calc.bill * calc.selectedBtn) / calc.num);
       }
     }
   };
+
   return (
     <section className="section__input">
-      <p>Bill</p>
+      <p className="p__step">1. Enter your bill</p>
       <input
+        className="input__bill"
         type="number"
         value={calc.bill}
         placeholder="$"
         onChange={handleChangeBill}
-      ></input>
+      />
       <div className="wrapper__btn">
-        <p>Select Tip (%)</p>
+        <p className="p__step">2. Add a tip (%)</p>
         <ThemeProvider theme={theme}>
           <button
             className={
@@ -126,19 +123,23 @@ export default function InputSection() {
           type="number"
           value={calc.displayInput}
           className="input__custom"
-          placeholder="Custom Tip(%)"
+          placeholder="Custom tip amount(%)"
           onChange={handleChangeCustom}
           disabled={calc.selectedBtn !== 0 ? true : false}
         />
       </div>
-      <p>Number of People</p>
+      <p className="p__step">3. How many people do you split a bill with?</p>
       <input
+        className="input__people"
         type="number"
         value={calc.num}
         placeholder="How many people...?"
         onChange={handleChangeNum}
       ></input>
-      <button onClick={handleClickCalc}>Calculate</button>
+      <br />
+      <button className="btn__calculate" onClick={handleClickCalc}>
+        Calculate
+      </button>
     </section>
   );
 }
