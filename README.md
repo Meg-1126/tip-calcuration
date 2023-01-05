@@ -3,7 +3,7 @@ This application enables users to calculate the tip and total payment per person
 ![Top page](./public/images/tipcalculator.png)
 
 ## Demo
-You can see how it works by visiting [here](https://meg-1126.github.io/tip-calcuration)
+You can see how it works by visiting [here](https://tip-calcuration.vercel.app/)
 
 ## How to use this app?
 There are easy three steps to calculate the tip & total amount of payment per person.
